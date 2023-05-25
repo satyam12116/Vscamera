@@ -1,0 +1,89 @@
+
+  <div  class="container">
+    <h2 class="text-center my-2 py-2">CCTV Order Booking Form</h2>
+
+ 
+    <div *ngIf="closeForm">
+      <form [formGroup]="projectForm"(submit)="submitHandler()"  class="needs-validation" novalidate>
+      
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input type="name" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter Your Full Name"required [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required']">
+              This field is required.
+            </div>
+        </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="email" class="form-label">Email ID:</label>
+          <input type="email" class="form-control" id="email" name="email"  formControlName="email" placeholder="Enter Your Email Id" required [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required']">
+              This field is required.
+            </div>
+        </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number:</label>
+          <input type="number" class="form-control" id="phone" name="phone"  formControlName="phone"placeholder="Enter Your Phone Number" required [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required']">
+              This field is required.
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="system-type">CCTV System Type:</label>
+          <select class="form-control"  formControlName="cctvSystemType" id="system-type" name="system-type" required>
+            <option value="">Please select</option>
+            <option value="Home">For Home</option>
+            <option value="Office">For Office</option>
+            <option value="College">For College</option>
+            <option value="Resturent">For Resturent</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="camera-number">Number of Cameras:</label>
+          <input type="number" placeholder="Number Of Cameras" formControlName="noOfCamera" class="form-control" id="camera-number" name="camera-number" min="1" max="16" required>
+        </div>
+        <div class="form-group">
+            <label for="system-type">Storage Capacity</label>
+            <select class="form-control"  id="system-type" formControlName="storageCapacity" name="system-type" required>
+              <option value="">Please select</option>
+              <option value="20gb">20gb</option>
+              <option value="40gb">40gb</option>
+              <option value="60gb">60gb</option>
+              <option value="100gb">100gb</option>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="installation-date">Installation Date</label>
+          <input type="date" class="form-control" formControlName="installationDate" id="installation-date" name="installation-date" required>
+        </div>
+        <div class="form-group">
+          <label for="installation-time">Installation Time</label>
+          <input type="time" class="form-control" formControlName="insatallationTime" id="installation-time" name="installation-time" required>
+        </div>
+        <div class="form-group">
+          <label for="installation-location">Installation Location</label>
+          <textarea class="form-control" formControlName="installationLocation" id="installation-location" name="installation-location" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="special-requirements">Special Requirements</label>
+          <textarea class="form-control" formControlName="specialRequirement" id="special-requirements" name="special-requirements" rows="4"></textarea>
+        </div>
+    
+        
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+          <label class="form-check-label" for="exampleCheck1">Remeber Me</label>
+        </div>
+        <button type="submit" (click)="validate()"class="btn btn-dark">Submit</button>
+      </form>
+    </div>
+    
+  </div>
+  
